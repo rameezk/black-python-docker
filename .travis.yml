@@ -1,0 +1,16 @@
+services:
+  - 'docker'
+
+script:
+  - docker build -t python-black .
+
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+      docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD;
+      docker tag python-black rameezk/python-black:latest;
+      docker push rameezk/python-black:latest;
+      echo "Pushed";
+    fi
+
+notifications:
+  email: true
