@@ -6,11 +6,6 @@
 
 
 ## Usage
-### Docker
-```bash
-docker run rameezk/python-black -- black check .
-```
-
 ### GitLab
 ```yaml
 black-check:
